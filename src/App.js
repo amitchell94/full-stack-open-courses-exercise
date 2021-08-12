@@ -1,4 +1,3 @@
-import './App.css';
 
 const Header = (props) => {
   return (
@@ -10,11 +9,11 @@ const Header = (props) => {
 
 const Content = (props) => {
   return (
-      <>
-        <Part part={props.parts[0]}/>
-        <Part part={props.parts[1]}/>
-        <Part part={props.parts[2]}/>
-      </>
+      <div>
+          {props.parts.map((el, i) =>
+              <Part key={i} part={el}/>
+          )}
+      </div>
   )
 }
 
@@ -41,6 +40,16 @@ const Total = (props) => {
   )
 }
 
+const Course = ({course}) => {
+
+    return (
+            <div>
+                <Header title={course.name}/>
+                <Content parts={course.parts}/>
+            </div>
+    )
+}
+
 const App = () => {
   const course = {
     id: 1,
@@ -56,11 +65,11 @@ const App = () => {
         exercises: 7,
         id: 2
       },
-      {
-        name: 'State of a component',
-        exercises: 14,
-        id: 3
-      }
+        {
+            name: 'State of a component',
+            exercises: 14,
+            id: 3
+        }
     ]
   }
 
